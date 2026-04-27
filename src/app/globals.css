@@ -1,0 +1,225 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* MADZ Consultant Design System
+   Colors: Sky Blue primary, Light Green accent, Clean premium aesthetic
+   All colors MUST be HSL.
+*/
+
+@layer base {
+    :root {
+        /* Core brand colors */
+        --background: 0 0% 100%;
+        --foreground: 215 25% 15%;
+
+        --card: 0 0% 100%;
+        --card-foreground: 215 25% 15%;
+
+        --popover: 0 0% 100%;
+        --popover-foreground: 215 25% 15%;
+
+        /* Sky Blue - Primary brand color */
+        --primary: 199 89% 48%;
+        --primary-foreground: 0 0% 100%;
+
+        /* Light muted blue for secondary */
+        --secondary: 199 60% 95%;
+        --secondary-foreground: 199 89% 35%;
+
+        /* Light Green - Accent/CTA color */
+        --accent: 142 71% 45%;
+        --accent-foreground: 0 0% 100%;
+
+        --muted: 210 20% 96%;
+        --muted-foreground: 215 16% 47%;
+
+        --destructive: 0 84% 60%;
+        --destructive-foreground: 0 0% 100%;
+
+        --border: 214 32% 91%;
+        --input: 214 32% 91%;
+        --ring: 199 89% 48%;
+
+        --radius: 0.75rem;
+
+        /* Custom gradients */
+        --gradient-hero: linear-gradient(
+            135deg,
+            hsl(199 89% 48% / 0.9) 0%,
+            hsl(142 71% 45% / 0.8) 100%
+        );
+        --gradient-cta: linear-gradient(
+            135deg,
+            hsl(142 71% 45%) 0%,
+            hsl(142 71% 38%) 100%
+        );
+        --gradient-card: linear-gradient(
+            180deg,
+            hsl(0 0% 100%) 0%,
+            hsl(199 60% 98%) 100%
+        );
+
+        /* Shadows */
+        --shadow-soft: 0 4px 20px -2px hsl(199 89% 48% / 0.12);
+        --shadow-card: 0 8px 30px -4px hsl(215 25% 15% / 0.1);
+        --shadow-button: 0 4px 14px -2px hsl(142 71% 45% / 0.4);
+
+        /* Sidebar (keeping defaults) */
+        --sidebar-background: 0 0% 98%;
+        --sidebar-foreground: 240 5% 26%;
+        --sidebar-primary: 199 89% 48%;
+        --sidebar-primary-foreground: 0 0% 100%;
+        --sidebar-accent: 199 60% 95%;
+        --sidebar-accent-foreground: 199 89% 35%;
+        --sidebar-border: 220 13% 91%;
+        --sidebar-ring: 199 89% 48%;
+    }
+
+    .dark {
+        --background: 215 25% 8%;
+        --foreground: 210 20% 96%;
+
+        --card: 215 25% 12%;
+        --card-foreground: 210 20% 96%;
+
+        --popover: 215 25% 12%;
+        --popover-foreground: 210 20% 96%;
+
+        --primary: 199 89% 55%;
+        --primary-foreground: 0 0% 100%;
+
+        --secondary: 215 25% 18%;
+        --secondary-foreground: 210 20% 90%;
+
+        --accent: 142 71% 50%;
+        --accent-foreground: 0 0% 100%;
+
+        --muted: 215 25% 18%;
+        --muted-foreground: 215 16% 60%;
+
+        --destructive: 0 62% 50%;
+        --destructive-foreground: 0 0% 100%;
+
+        --border: 215 25% 20%;
+        --input: 215 25% 20%;
+        --ring: 199 89% 55%;
+
+        --sidebar-background: 215 25% 10%;
+        --sidebar-foreground: 210 20% 90%;
+        --sidebar-primary: 199 89% 55%;
+        --sidebar-primary-foreground: 0 0% 100%;
+        --sidebar-accent: 215 25% 18%;
+        --sidebar-accent-foreground: 210 20% 90%;
+        --sidebar-border: 215 25% 20%;
+        --sidebar-ring: 199 89% 55%;
+    }
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+
+    body {
+        @apply bg-background text-foreground antialiased;
+        font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        @apply font-bold tracking-tight;
+    }
+}
+
+@layer utilities {
+    .text-gradient {
+        @apply bg-clip-text text-transparent;
+        background-image: var(--gradient-hero);
+    }
+
+    .bg-gradient-hero {
+        background: var(--gradient-hero);
+    }
+
+    .bg-gradient-cta {
+        background: var(--gradient-cta);
+    }
+
+    .bg-gradient-card {
+        background: var(--gradient-card);
+    }
+
+    .shadow-soft {
+        box-shadow: var(--shadow-soft);
+    }
+
+    .shadow-card {
+        box-shadow: var(--shadow-card);
+    }
+
+    .shadow-button {
+        box-shadow: var(--shadow-button);
+    }
+
+    .animate-float {
+        animation: float 6s ease-in-out infinite;
+    }
+
+    .animate-fade-up {
+        animation: fadeUp 0.6s ease-out forwards;
+    }
+
+    .animate-fade-in {
+        animation: fadeIn 0.5s ease-out forwards;
+    }
+
+    .animate-scale-in {
+        animation: scaleIn 0.5s ease-out forwards;
+    }
+}
+
+@keyframes float {
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
